@@ -19,7 +19,9 @@ all: verify
 
 setup:
 	@echo "setup"
-ifeq ($(ARDUINO_CLI),TRUE) 
+ifeq ($(ARDUINO_CLI),TRUE)
+	arduino-cli config init --overwrite --additional-urls https://dl.espressif.com/dl/package_esp32_index.json
+	arduino-cli config set directories.user $(shell pwd)
 else
 	arduino --pref sketchbook.path= --save-prefs
 endif
@@ -34,20 +36,22 @@ endif
 
 upload:
 	@echo "upload"
-ifeq ($(ARDUINO_CLI),TRUE) 
+ifeq ($(ARDUINO_CLI),TRUE)
+	arduino-cli upload --fqbn $(FQBN) $(SKETCH_PATH)
 else
 	arduino --upload $(SKETCH_PATH)
 endif
 
 info:
 	@echo "info"
-ifeq ($(ARDUINO_CLI),TRUE) 
+ifeq ($(ARDUINO_CLI),TRUE)
+	arduino-cli board list
 else
 endif
 
 clean:
 	@echo "clean"
-ifeq ($(ARDUINO_CLI),TRUE) 
+ifeq ($(ARDUINO_CLI),TRUE)
 else
 endif
 
@@ -62,4 +66,12 @@ help:
 	@echo "help"
 ifeq ($(ARDUINO_CLI),TRUE)
 else
+endif
+
+get_config:
+	@echo "help"
+ifeq ($(ARDUINO_CLI),TRUE)
+	arduino-cli config dump
+else
+	arduino --get-pref
 endif
