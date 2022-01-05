@@ -1,6 +1,5 @@
 # Name: Makefile
 # Author: Vanderson da Silva dos Santos
-# Zima hospital automation team
 # 01/2022
 
 ###############################################################################
@@ -72,7 +71,7 @@ else
 endif
 
 get_config:
-	@echo "help"
+	@echo "get config"
 ifeq ($(ARDUINO_CLI),TRUE)
 	arduino-cli config dump
 else
