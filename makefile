@@ -20,8 +20,11 @@ all: verify
 setup:
 	@echo "setup"
 ifeq ($(ARDUINO_CLI),TRUE)
+	arduino-cli core install arduino:avr
 	arduino-cli config init --overwrite --additional-urls https://dl.espressif.com/dl/package_esp32_index.json
 	arduino-cli config set directories.user $(shell pwd)
+	arduino-cli core update-index
+	arduino-cli core install esp32:esp32
 else
 	arduino --pref sketchbook.path= --save-prefs
 endif
@@ -56,7 +59,7 @@ else
 endif
 
 board_list:
-	arduino-cli board listall
+	@echo "board list"
 ifeq ($(ARDUINO_CLI),TRUE)
 	arduino-cli board listall
 else
