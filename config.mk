@@ -26,13 +26,14 @@ UPLOAD_PROTOCOL = arduino
 # CPU Speed in hz.
 CPU_FREQ = 16000000L
 
-# Board type.
-MCU = ESP32
-FQBN = esp32:esp32:esp32doit-devkit-v1
+# Board type and config.
+MCU = ARDUINO_UNO
+FQBN = arduino:avr:uno
 
 # Default values, can be set on the command line or here
 ARDUINO_CLI ?= TRUE
-FILE	?= controle
+COM 	?= COM6
+FILE	?= serial_sender
 DEBUG   ?= 1
 VERBOSE ?= 0
 TEST    ?= 0

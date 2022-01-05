@@ -40,7 +40,7 @@ endif
 upload:
 	@echo "upload"
 ifeq ($(ARDUINO_CLI),TRUE)
-	arduino-cli upload --fqbn $(FQBN) $(SKETCH_PATH)
+	arduino-cli upload -p $(COM) --fqbn $(FQBN) $(SKETCH_PATH)
 else
 	arduino --upload $(SKETCH_PATH)
 endif
@@ -58,7 +58,7 @@ ifeq ($(ARDUINO_CLI),TRUE)
 else
 endif
 
-board_list:
+board_avaliable:
 	@echo "board list"
 ifeq ($(ARDUINO_CLI),TRUE)
 	arduino-cli board listall
