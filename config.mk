@@ -20,19 +20,13 @@ TEST_DIR := tests
 # Baud rate.
 UPLOAD_SPEED = 57600
 
-# Programmer protocol.
-UPLOAD_PROTOCOL = arduino
-
-# CPU Speed in hz.
-CPU_FREQ = 16000000L
-
 # Board type and config.
-MCU = ARDUINO_UNO
-FQBN = arduino:avr:uno
+MCU = ESP32
+FQBN = esp32:esp32:esp32doit-devkit-v1
 
 # Default values, can be set on the command line or here
 ARDUINO_CLI ?= TRUE
-COM 	?= COM6
+COM 	?= COM7
 FILE	?= serial_sender
 DEBUG   ?= 1
 VERBOSE ?= 0

@@ -14,7 +14,7 @@ SKETCH_PATH := $(SRC_DIR)/$(FILE)/$(FILE).ino
 
 #.PHONY: all verify upload info clean help
 
-all: verify
+all: verify upload
 
 setup:
 	@echo "setup"
@@ -51,22 +51,10 @@ ifeq ($(ARDUINO_CLI),TRUE)
 else
 endif
 
-clean:
-	@echo "clean"
-ifeq ($(ARDUINO_CLI),TRUE)
-else
-endif
-
 board_avaliable:
 	@echo "board list"
 ifeq ($(ARDUINO_CLI),TRUE)
 	arduino-cli board listall
-else
-endif
-
-help:
-	@echo "help"
-ifeq ($(ARDUINO_CLI),TRUE)
 else
 endif
 
@@ -77,3 +65,34 @@ ifeq ($(ARDUINO_CLI),TRUE)
 else
 	arduino --get-pref
 endif
+
+clean:
+	@echo "clean"
+ifeq ($(ARDUINO_CLI),TRUE)
+else
+endif
+
+help:
+	@echo "----------------------- Arduino project Template ------------------------------"
+	@echo "           Welcome to the makefile from the Arduino project template"
+	@echo "                       Check the the possible commands here"
+	@echo 
+	@echo  
+	@echo "Options:"																	  
+	@echo "	 help:       Shows that help"
+	@echo "	 setup:      Install esp32 and config arduino ide"
+	@echo "	 verify:     Verify your code"
+	@echo "	 upload:     Upload your code to the board"
+	@echo "	 info:       Shows informations about the boards connected in your computer"
+	@echo "	 boards:     Shows boards avaliable to use"
+	@echo "	 get_config: Shows the arduino configuration file"
+	@echo "	 clean:      Clean build folder"
+	@echo
+	@echo "Settings:"
+	@echo "	 UPLOAD_SPEED   := "$(UPLOAD_SPEED)
+	@echo "	 ARDUINO_CLI    := "$(ARDUINO_CLI)
+	@echo "	 COM            := "$(COM)
+	@echo "	 MCU            := "$(MCU)
+	@echo "	 FQBN           := "$(FQBN)
+	@echo "	 FILE           := "$(FILE)
+	@echo 
