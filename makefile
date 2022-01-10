@@ -51,8 +51,8 @@ ifeq ($(ARDUINO_CLI),TRUE)
 else
 endif
 
-board_avaliable:
-	@echo "board list"
+boards:
+	@echo "boards"
 ifeq ($(ARDUINO_CLI),TRUE)
 	arduino-cli board listall
 else
@@ -65,6 +65,16 @@ ifeq ($(ARDUINO_CLI),TRUE)
 else
 	arduino --get-pref
 endif
+
+serial:
+	@echo "serial"
+ifeq ($(ARDUINO_CLI),TRUE)
+	arduino-cli monitor -p $(COM) -c Baudrate=115200 
+endif
+
+add_lib:
+	@echo "add lib"
+	git submodule add --name $(NAME) $(URL) libraries/$(NAME)
 
 clean:
 	@echo "clean"
@@ -86,6 +96,7 @@ help:
 	@echo "	 info:       Shows informations about the boards connected in your computer"
 	@echo "	 boards:     Shows boards avaliable to use"
 	@echo "	 get_config: Shows the arduino configuration file"
+	@echo "	 serial:     Shows serial monitor read"
 	@echo "	 clean:      Clean build folder"
 	@echo
 	@echo "Settings:"

@@ -23,10 +23,11 @@ UPLOAD_SPEED = 57600
 # Board type and config.
 MCU = ESP32
 FQBN = esp32:esp32:esp32doit-devkit-v1
+BAUDRATE = 115200
 
 # Default values, can be set on the command line or here
 ARDUINO_CLI ?= TRUE
-COM 	?= COM7
+COM 	?= COM6
 FILE	?= serial_sender
 DEBUG   ?= 1
 VERBOSE ?= 0
