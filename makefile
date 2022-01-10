@@ -1,7 +1,6 @@
 # Name: Makefile
 # Author: Vanderson da Silva dos Santos
 # 01/2022
-
 ###############################################################################
 
 # Tune the lines below only if you know what you are doing:
@@ -12,8 +11,6 @@ include config.mk
 BUILD_PATH := $(SRC_DIR)/$(FILE)/build
 SKETCH_PATH := $(SRC_DIR)/$(FILE)/$(FILE).ino
 
-#.PHONY: all verify upload info clean help
-
 all: verify upload
 
 setup:
@@ -22,6 +19,7 @@ ifeq ($(ARDUINO_CLI),TRUE)
 	arduino-cli core install arduino:avr
 	arduino-cli config init --overwrite --additional-urls https://dl.espressif.com/dl/package_esp32_index.json
 	arduino-cli config set directories.user $(shell pwd)
+	arduino-cli config set sketch.always_export_binaries true
 	arduino-cli core update-index
 	arduino-cli core install esp32:esp32
 else
@@ -83,11 +81,11 @@ else
 endif
 
 help:
-	@echo "----------------------- Arduino project Template ------------------------------"
+	@echo "----------------------- Arduino Project Template ------------------------------"
 	@echo "           Welcome to the makefile from the Arduino project template"
 	@echo "                       Check the the possible commands here"
 	@echo 
-	@echo  
+	@echo
 	@echo "Options:"																	  
 	@echo "	 help:       Shows that help"
 	@echo "	 setup:      Install esp32 and config arduino ide"
@@ -103,6 +101,7 @@ help:
 	@echo "	 UPLOAD_SPEED   := "$(UPLOAD_SPEED)
 	@echo "	 ARDUINO_CLI    := "$(ARDUINO_CLI)
 	@echo "	 COM            := "$(COM)
+	@echo "	 BAUDRATE       := "$(BAUDRATE)
 	@echo "	 MCU            := "$(MCU)
 	@echo "	 FQBN           := "$(FQBN)
 	@echo "	 FILE           := "$(FILE)
