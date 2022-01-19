@@ -16,14 +16,11 @@ TEST_DIR := tests
 UPLOAD_SPEED = 57600
 
 # Default Board type and config.
-MCU ?= arduino
 FQBN ?= arduino:avr:uno
 
 # Default values, can be set on the command line or here
 ARDUINO_CLI ?= TRUE
-COM 	    ?= COM6
+COM 	    ?= COM7
 BAUDRATE    ?= 9600
 FILE	    ?= serial_sender
-DEBUG       ?= 1
-VERBOSE     ?= 0
 TEST        ?= 0

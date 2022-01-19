@@ -9,7 +9,12 @@
 include config.mk
 
 BUILD_PATH := $(SRC_DIR)/$(FILE)/build
-SKETCH_PATH := $(SRC_DIR)/$(FILE)/$(FILE).ino
+
+ifeq ($(TEST),1)
+	SKETCH_PATH := $(TEST_DIR)/$(PROJ_NAME)/$(FILE)/$(FILE).ino
+else
+	SKETCH_PATH := $(SRC_DIR)/$(FILE)/$(FILE).ino
+endif
 
 all: verify upload
 
