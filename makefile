@@ -14,6 +14,8 @@ C_HEADERS  := $(shell find $(LIB_DIR) -name "*.hpp")
 C_INO      := $(shell find $(TEST_DIR) -name "*.ino")
 C_MAINS    := $(shell find $(SRC_DIR) -name "*.ino")
 
+BUILD_FOLDERS := $(shell find -name "build" )
+
 ifeq ($(TEST),1)
 	SKETCH_PATH := $(TEST_DIR)/$(PROJ_NAME)/$(FILE)/$(FILE).ino
 else
@@ -85,9 +87,7 @@ add_lib:
 
 clean:
 	@echo "clean"
-ifeq ($(ARDUINO_CLI),TRUE)
-else
-endif
+	rm -rf $(BUILD_FOLDERS)
 
 # Format source code using uncrustify
 format:
