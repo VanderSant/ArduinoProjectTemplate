@@ -9,6 +9,10 @@
 include config.mk
 
 BUILD_PATH := $(SRC_DIR)/$(FILE)/build
+C_SOURCES  := $(shell find $(LIB_DIR) -name "*.cpp")
+C_HEADERS  := $(shell find $(LIB_DIR) -name "*.hpp")
+C_INO      := $(shell find $(TEST_DIR) -name "*.ino")
+C_MAINS    := $(shell find $(SRC_DIR) -name "*.ino")
 
 ifeq ($(TEST),1)
 	SKETCH_PATH := $(TEST_DIR)/$(PROJ_NAME)/$(FILE)/$(FILE).ino
@@ -85,6 +89,11 @@ ifeq ($(ARDUINO_CLI),TRUE)
 else
 endif
 
+# Format source code using uncrustify
+format:
+	@echo "format"
+	uncrustify -c uncrustify.cfg --replace --no-backup $(C_SOURCES) $(C_HEADERS) $(C_INO) $(C_MAINS)	
+
 help:
 	@echo "----------------------- Arduino Project Template ------------------------------"
 	@echo "           Welcome to the makefile from the Arduino project template"
@@ -100,6 +109,7 @@ help:
 	@echo "	 boards:     Shows boards avaliable to use"
 	@echo "	 get_config: Shows the arduino configuration file"
 	@echo "	 serial:     Shows serial monitor read"
+	@echo "	 format:     Format code using uncrustify"
 	@echo "	 clean:      Clean build folder"
 	@echo
 	@echo "Settings:"
