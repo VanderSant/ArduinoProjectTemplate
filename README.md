@@ -2,6 +2,13 @@
 
 > Basic Arduino and Arduino-cli project template with Makefile
 
+## Index<!-- omit in toc -->
+- [Ideia](#%F0%9F%9A%80-ideia)
+- [Dependencies](#%F0%9F%93%A6-dependencies)
+    - [Windows](#arduino-cli---windows)
+    - [Linux/WSL](#arduino-cli---linuxwsl)
+- [How to Use](#%F0%9F%92%A5-how-to-use)
+
 ## 🚀 Ideia 
 Hey everyone, sometimes i need to program some arduino or esp32, but I realy don't like the arduino IDE or the Arduino extension from vscode, because of that I'm trying to create a simple makefile to install esp32, check my codes, with all my libries, of course, and upload the bin file into the microcontroler.
 To do that, i'm using the classical arduino program and the amazing arduino-cli, which is better in many ways.
@@ -150,7 +157,7 @@ make verify FILE=serial_sender
 make serial BAUDRATE=9600
 ```
 
-In general, this makefile can do a plenty of different commands, to check all the options try this command:
+- In general, this makefile can do a plenty of different commands, to check all the options try this command:
 ```bash
 make help
 ```
