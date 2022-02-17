@@ -88,7 +88,6 @@ help:
 	@echo "	 format:     Format code using uncrustify"
 	@echo "	 add_lib:    Add library - Need to log in github account"
 	@echo "	 clean:      Clean build folder"
-	@echo "	 help:       Print this tutorial"
 	@echo
 	@echo "Settings:"
 	@echo "	 UPLOAD_SPEED   := "$(UPLOAD_SPEED)

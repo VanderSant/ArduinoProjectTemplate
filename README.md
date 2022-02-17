@@ -8,6 +8,7 @@
     - [Windows](#arduino-cli---windows)
     - [Linux/WSL](#arduino-cli---linuxwsl)
 - [How to Use](#💥-how-to-use)
+    -[Change board](#change-board)
 
 ## 🚀 Ideia 
 Hey everyone, sometimes i need to program some arduino or esp32, but I really don't like the arduino IDE or the Arduino extension from vscode, because of that I'm trying to create a simple makefile to install esp32, check my codes, with all my libraries, of course, and upload the bin file into the microcontroler.
@@ -134,6 +135,10 @@ Use "arduino-cli [command] --help" para mais informações sobre um comando.
 
 ## 💥 How To Use
 
+- Before anything, run the setup to config your project
+```bash
+make setup
+```
 - To verify and upload code in folder src to your board:
 ```bash
 make FILE=file_name
@@ -180,7 +185,6 @@ Options:
          format:     Format code using uncrustify
          add_lib:    Add library - Need to log in github account
          clean:      Clean build folder
-         help:       Print this tutorial
 
 Settings:
          UPLOAD_SPEED   := 57600
@@ -188,4 +192,18 @@ Settings:
          BAUDRATE       := 9600
          FQBN           := arduino:avr:uno
          FILE           := serial_sender
+```
+
+### Change Board
+
+To change the board, you need to get the FQBN from the board and change the FQBN name in the config.mk file.
+
+To read the name of the FQBN board name run this command:
+```bash
+make info
+```
+
+If you are using a ESP32, make info will not print the FQBN, but you can get the correct name searching the FQBN the boards list:
+```bash
+make boards
 ```
