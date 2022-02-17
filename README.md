@@ -12,11 +12,9 @@ The only requisition of the project template today is the arduino cli.
 
 I'll describe how to install, but, if you prefer, the arduino has an official tutorial to teach how to install arduino-cli in your Windows. To watch the video [click here](https://youtu.be/1jMWsFER-Bc)
 
-1 - Download the program from [arduino site](https://arduino.github.io/arduino-cli/dev/installation/)
-
-2 - Extract the downloaded program to the folder of your choise and copy the path of the .exe (.exe file should be inside of the folder).
-
-3 - Add the .exe path in the environment variables of the Windows.
+1. Download the program from [arduino site](https://arduino.github.io/arduino-cli/dev/installation/)
+2. Extract the downloaded program to the folder of your choise and copy the path of the .exe (.exe file should be inside of the folder).
+3. Add the .exe path in the environment variables of the Windows.
 
 To verify if it's everything ok, paste this in your terminal:
 
@@ -76,6 +74,8 @@ Only paste theses commands in your terminal to install:
 cd ~
 curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
 ```
+
+To verify if it's everything ok, paste this in your terminal:
 
 ```bash
 arduino-cli
