@@ -125,6 +125,60 @@ Use "arduino-cli [command] --help" para mais informações sobre um comando.
 
 ```
 
-## 🚧 Work in progress
+## 💥 How To Use
 
-I'll soon open a release and explain how to use in Windows and Ubuntu
+- To verify and upload code in folder src to your board:
+```bash
+make FILE=file_name
+```
+Exemple:
+```bash
+make FILE=serial_sender
+```
+
+- To verify code in folder src to your board:
+```bash
+make verify FILE=file_name
+```
+Exemple:
+```bash
+make verify FILE=serial_sender
+```
+
+- To initilize serial read
+```bash
+make serial BAUDRATE=9600
+```
+
+In general, this makefile can do a plenty of different commands, to check all the options try this command:
+```bash
+make help
+```
+This command must print something like this:
+```bash
+----------------------- Arduino Project Template ------------------------------
+           Welcome to the makefile from the Arduino project template
+                       Check the the possible commands here
+
+
+Options:
+         help:       Shows that help
+         setup:      Install esp32 and config arduino ide
+         verify:     Verify your code
+         upload:     Upload your code to the board
+         info:       Shows informations about the boards connected in your computer
+         boards:     Shows boards avaliable to use
+         get_config: Shows the arduino configuration file
+         serial:     Shows serial monitor read
+         format:     Format code using uncrustify
+         add_lib:    Add library - Need to log in github account
+         clean:      Clean build folder
+         help:       Print this tutorial
+
+Settings:
+         UPLOAD_SPEED   := 57600
+         COM            := COM7
+         BAUDRATE       := 9600
+         FQBN           := arduino:avr:uno
+         FILE           := serial_sender
+```
