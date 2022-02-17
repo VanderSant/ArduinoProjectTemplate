@@ -19,7 +19,6 @@ UPLOAD_SPEED = 57600
 FQBN ?= arduino:avr:uno
 
 # Default values, can be set on the command line or here
-ARDUINO_CLI ?= TRUE
 COM 	    ?= COM7
 BAUDRATE    ?= 9600
 FILE	    ?= serial_sender

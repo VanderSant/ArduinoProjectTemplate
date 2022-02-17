@@ -26,60 +26,36 @@ all: verify upload
 
 setup:
 	@echo "setup"
-ifeq ($(ARDUINO_CLI),TRUE)
 	arduino-cli core install arduino:avr
 	arduino-cli config init --overwrite --additional-urls https://dl.espressif.com/dl/package_esp32_index.json
 	arduino-cli config set directories.user $(shell pwd)
 	arduino-cli config set sketch.always_export_binaries true
 	arduino-cli core update-index
 	arduino-cli core install esp32:esp32
-else
-	arduino --pref sketchbook.path= --save-prefs
-endif
 	
 verify:
 	@echo "verify"
-ifeq ($(ARDUINO_CLI),TRUE)
 	arduino-cli compile --fqbn $(FQBN) $(SKETCH_PATH)
-else
-	arduino --verify $(SKETCH_PATH)
-endif
 
 upload:
 	@echo "upload"
-ifeq ($(ARDUINO_CLI),TRUE)
 	arduino-cli upload -p $(COM) --fqbn $(FQBN) $(SKETCH_PATH)
-else
-	arduino --upload $(SKETCH_PATH)
-endif
 
 info:
 	@echo "info"
-ifeq ($(ARDUINO_CLI),TRUE)
 	arduino-cli board list
-else
-endif
 
 boards:
 	@echo "boards"
-ifeq ($(ARDUINO_CLI),TRUE)
 	arduino-cli board listall
-else
-endif
 
 get_config:
 	@echo "get config"
-ifeq ($(ARDUINO_CLI),TRUE)
 	arduino-cli config dump
-else
-	arduino --get-pref
-endif
 
 serial:
 	@echo "serial"
-ifeq ($(ARDUINO_CLI),TRUE)
 	arduino-cli monitor -p $(COM) -c Baudrate=$(BAUDRATE) 
-endif
 
 add_lib:
 	@echo "add lib"
@@ -116,7 +92,6 @@ help:
 	@echo
 	@echo "Settings:"
 	@echo "	 UPLOAD_SPEED   := "$(UPLOAD_SPEED)
-	@echo "	 ARDUINO_CLI    := "$(ARDUINO_CLI)
 	@echo "	 COM            := "$(COM)
 	@echo "	 BAUDRATE       := "$(BAUDRATE)
 	@echo "	 FQBN           := "$(FQBN)
