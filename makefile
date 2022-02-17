@@ -17,7 +17,7 @@ C_MAINS    := $(shell find $(SRC_DIR) -name "*.ino")
 BUILD_FOLDERS := $(shell find -name "build" )
 
 ifeq ($(TEST),1)
-	SKETCH_PATH := $(TEST_DIR)/$(PROJ_NAME)/$(FILE)/$(FILE).ino
+	SKETCH_PATH := $(TEST_DIR)/$(FILE)/$(FILE).ino
 else
 	SKETCH_PATH := $(SRC_DIR)/$(FILE)/$(FILE).ino
 endif
@@ -78,7 +78,7 @@ endif
 serial:
 	@echo "serial"
 ifeq ($(ARDUINO_CLI),TRUE)
-	arduino-cli monitor -p $(COM) -c Baudrate=115200 
+	arduino-cli monitor -p $(COM) -c Baudrate=$(BAUDRATE) 
 endif
 
 add_lib:
@@ -110,14 +110,17 @@ help:
 	@echo "	 get_config: Shows the arduino configuration file"
 	@echo "	 serial:     Shows serial monitor read"
 	@echo "	 format:     Format code using uncrustify"
+	@echo "	 add_lib:    Add library - Need to log in github account"
 	@echo "	 clean:      Clean build folder"
+	@echo "	 help:       Print this tutorial"
 	@echo
 	@echo "Settings:"
 	@echo "	 UPLOAD_SPEED   := "$(UPLOAD_SPEED)
 	@echo "	 ARDUINO_CLI    := "$(ARDUINO_CLI)
 	@echo "	 COM            := "$(COM)
 	@echo "	 BAUDRATE       := "$(BAUDRATE)
-	@echo "	 MCU            := "$(MCU)
 	@echo "	 FQBN           := "$(FQBN)
 	@echo "	 FILE           := "$(FILE)
 	@echo 
+
+.PHONY: setup verify upload info boards get_config serial add_lib clean format help
